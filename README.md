@@ -6,3 +6,4 @@ Repositório para o Back End em Spring Boot, do projeto Chefes do Kazambastão, 
 - Marcelo Marchetto
 - Marcelo Rabello Barranco
 - Thomas Chiari Ciocchetti de Souza
+- Felipe Maluli de Carvalho Dias
