@@ -12,6 +12,7 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	compile.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
 }
 
 repositories {
@@ -28,8 +29,23 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'io.springfox:springfox-swagger2:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+springBoot {
+	mainClassName = 'com.example.Application'
+}
+
+task stage {
+	dependsOn bootJar
+}
+
+swaggerSources {
+	inputDir = file("${project.rootDir}/src/main/java")
+	outputDir = file("${buildDir}/generated/swagger-ui")
 }
