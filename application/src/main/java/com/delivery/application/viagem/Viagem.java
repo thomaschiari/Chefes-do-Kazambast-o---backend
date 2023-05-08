@@ -1,5 +1,6 @@
 package com.delivery.application.viagem;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -55,6 +56,9 @@ public class Viagem {
     @NotNull
     @NonNull
     private Integer status;
+
+    @Column
+    private Integer idMotorista;
 
     @Column
     private String identifier;
