@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class ViagemService {
@@ -26,6 +27,7 @@ public class ViagemService {
                         viagem.getDistancia(),
                         viagem.getTempo(),
                         viagem.getStatus(),
+                        viagem.getIdMotorista(),
                         viagem.getIdentifier()))
                 .collect(Collectors.toList());
 
@@ -66,6 +68,7 @@ public class ViagemService {
                 viagem.getDistancia(),
                 viagem.getTempo(),
                 viagem.getStatus(),
+                viagem.getIdMotorista(),
                 viagem.getIdentifier()
         );
     }
@@ -80,7 +83,7 @@ public class ViagemService {
                 viagemDTO.getDistancia(),
                 viagemDTO.getTempo(),
                 viagemDTO.getStatus(),
-                viagemDTO.getIdentifier()
+                null, viagemDTO.getIdentifier()
         );
     }
 }

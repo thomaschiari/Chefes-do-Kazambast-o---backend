@@ -1,7 +1,5 @@
 package com.delivery.application.viagem;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -63,7 +61,4 @@ public class Viagem {
     @Column
     private String identifier;
 
-    @Column
-    @OneToMany(mappedBy = "viagem", cascade = CascadeType.ALL)
-    private List<Pedido> pedidos;
 }

@@ -21,5 +21,6 @@ public class ViagemDTO {
     private Double distancia;
     private Integer tempo;
     private Integer status;
+    private Integer idMotorista;
     private String identifier;
 }
