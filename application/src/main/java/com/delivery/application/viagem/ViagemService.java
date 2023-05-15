@@ -2,6 +2,7 @@ package com.delivery.application.viagem;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -41,8 +42,10 @@ public class ViagemService {
         viagem.setIdentifier(UUID.randomUUID().toString());
         Viagem savedViagem = viagemRepository.save(viagem);
         return convertToDto(savedViagem);
+
     }
 
+    @Transactional
     public void deleteByIdentifier(String identifier) {
         viagemRepository.deleteByIdentifier(identifier);
     }
