@@ -58,4 +58,8 @@ public class Viagem {
 
     @Column
     private String identifier;
+
+    @Column
+    @OneToMany(mappedBy = "viagem", cascade = CascadeType.ALL)
+    private List<Pedido> pedidos;
 }
