@@ -16,19 +16,22 @@ public class ViagemController {
     private ViagemService viagemService;
 
     @GetMapping
-    public List<Viagem> findAll() {
-        return viagemService.findAll();
+    public ResponseEntity<List<ViagemDTO>> getAllViagens() {
+        List<ViagemDTO> viagens = viagemService.findAll();
+        return new ResponseEntity<>(viagens, HttpStatus.OK);
     }
 
     @GetMapping("/{identifier}")
-    public Viagem findByIdentifier(@PathVariable String identifier) {
-        return viagemService.findByIdentifier(identifier);
+    public ResponseEntity<ViagemDTO> findByIdentifier(@PathVariable String identifier) {
+        ViagemDTO viagem = viagemService.findByIdentifier(identifier);
+        return new ResponseEntity<>(viagem, HttpStatus.OK);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Viagem save(@RequestBody @Valid Viagem viajem) {
-        return viagemService.save(viajem);
+    public ResponseEntity<ViagemDTO> save(@RequestBody @Valid ViagemDTO viagemDTO) {
+        ViagemDTO savedViagem = viagemService.save(viagemDTO);
+        return new ResponseEntity<>(savedViagem, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{identifier}")
@@ -38,8 +41,9 @@ public class ViagemController {
     }
 
     @PutMapping
-    public Viagem update(@RequestBody @Valid Viagem viajem) {
-        return viagemService.update(viajem);
+    public ResponseEntity<ViagemDTO> update(@RequestBody @Valid ViagemDTO viagemDTO) {
+        ViagemDTO updatedViagem = viagemService.update(viagemDTO);
+        return new ResponseEntity<>(updatedViagem, HttpStatus.OK);
     }
 
 }
