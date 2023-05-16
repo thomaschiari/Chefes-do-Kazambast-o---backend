@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 
 import java.util.Date;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,5 +24,6 @@ public class ViagemDTO {
     private Integer tempo;
     private Integer status;
     private Integer idMotorista;
+    private List<String> itens;
     private String identifier;
 }

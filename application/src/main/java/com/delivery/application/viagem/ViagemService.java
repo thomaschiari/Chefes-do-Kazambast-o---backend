@@ -28,6 +28,7 @@ public class ViagemService {
                         viagem.getTempo(),
                         viagem.getStatus(),
                         viagem.getIdMotorista(),
+                        viagem.getItens(),
                         viagem.getIdentifier()))
                 .collect(Collectors.toList());
 
@@ -45,6 +46,14 @@ public class ViagemService {
         Viagem savedViagem = viagemRepository.save(viagem);
         return convertToDto(savedViagem);
 
+    }
+
+    //updateStatusByIdentifier
+    public ViagemDTO updateStatusByIdentifier(String identifier) {
+        Viagem viagem = viagemRepository.findByIdentifier(identifier).get(0);
+        viagem.setStatus(1);
+        Viagem updatedViagem = viagemRepository.save(viagem);
+        return convertToDto(updatedViagem);
     }
 
     @Transactional
@@ -69,6 +78,7 @@ public class ViagemService {
                 viagem.getTempo(),
                 viagem.getStatus(),
                 viagem.getIdMotorista(),
+                viagem.getItens(),
                 viagem.getIdentifier()
         );
     }
@@ -83,7 +93,7 @@ public class ViagemService {
                 viagemDTO.getDistancia(),
                 viagemDTO.getTempo(),
                 viagemDTO.getStatus(),
-                null, viagemDTO.getIdentifier()
+                null, viagemDTO.getIdentifier(), null
         );
     }
 }
