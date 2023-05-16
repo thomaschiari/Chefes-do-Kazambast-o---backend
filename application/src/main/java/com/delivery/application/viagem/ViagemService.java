@@ -43,19 +43,25 @@ public class ViagemService {
     private Integer obterIdMotoristaDisponivel() {
         String url = "http://192.168.10.174:8080/entregador";
     
-        // Faz a requisição GET para a API externa e obtém a resposta como HashMap
-        HashMap<String, Object>[] response = restTemplate.getForObject(url, HashMap[].class);
+        try {
+            // Faz a requisição GET para a API externa e obtém a resposta como HashMap
+            HashMap<String, Object>[] response = restTemplate.getForObject(url, HashMap[].class);
     
-        if (response != null && response.length > 0) {
-            for (HashMap<String, Object> driver : response) {
-                String statusOcupacao = (String) driver.get("status_ocupacao");
+            if (response != null && response.length > 0) {
+                for (HashMap<String, Object> driver : response) {
+                    String statusOcupacao = (String) driver.get("status_ocupacao");
     
-                if ("DISPONIVEL".equals(statusOcupacao)) {
-                    return (Integer) driver.get("id");
+                    if ("DISPONIVEL".equals(statusOcupacao)) {
+                        return (Integer) driver.get("id");
+                    }
                 }
             }
+        } catch (Exception e) {
+            // Lida com a exceção de conexão aqui
+            return null;
         }
     
-        return null; // Retorna null caso não haja motoristas disponíveis
+        return null; // Retorna null caso não haja motoristas disponíveis ou ocorra uma exceção de conexão
     }
+    
 }
