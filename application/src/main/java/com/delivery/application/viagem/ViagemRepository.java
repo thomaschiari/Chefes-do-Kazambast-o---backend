@@ -10,4 +10,5 @@ public interface ViagemRepository extends JpaRepository<Viagem, Integer> {
     List<Viagem> findByStatus(Integer status);
     List<Viagem> findByIdentifier(String identifier);
     void deleteByIdentifier(String identifier);
+    void confirmByIdentifier(String identifier);
 }

@@ -36,4 +36,10 @@ public class ViagemService {
         return viagemRepository.save(viajem);
     }
 
+    // confirmByIdentifier (change status to 1)
+    @Transactional
+    public void confirmByIdentifier(String identifier) {
+        viagemRepository.confirmByIdentifier(identifier);
+    }
+
 }

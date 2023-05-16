@@ -42,4 +42,10 @@ public class ViagemController {
     public Viagem update(@RequestBody @Valid Viagem viagem) {
         return viagemService.update(viagem);
     }
+
+    @PutMapping("/confirm/{identifier}") // confirmByIdentifier (change status to 1)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void confirmByIdentifier(@PathVariable String identifier) {
+        viagemService.confirmByIdentifier(identifier);
+    }
 }
