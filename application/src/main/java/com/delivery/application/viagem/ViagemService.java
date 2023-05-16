@@ -11,6 +11,26 @@ import java.util.stream.Collectors;
 @Service
 public class ViagemService {
 
+    public List<MotoristaDTO> getMotoristas() {
+        String url = "http://localhost:8080/entregador";
+        ResponseEntity<MotoristaDTO[]> response = restTemplate.getForEntity(url, MotoristaDTO[].class);
+        if (response.getStatusCode().is2xxSuccessful()) {
+            return Arrays.asList(response.getBody());
+        } else {
+            throw new RuntimeException("Erro ao fazer requisição");
+        }
+    }
+
+    public Integer getMotoristaDisponivel() {
+        List<MotoristaDTO> motoristas = getMotoristas();
+        for (MotoristaDTO motorista : motoristas) {
+            if ("DISPONIVEL".equals(motorista.getStatus_ocupacao())) {
+                return motorista.getId();
+            }
+        }
+        throw new RuntimeException("Nenhum motorista disponível");
+    }
+
     @Autowired
     private ViagemRepository viagemRepository;
 
@@ -24,6 +44,7 @@ public class ViagemService {
 
     public Viagem save(Viagem viajem) {
         viajem.setIdentifier(UUID.randomUUID().toString());
+        viajem.setIdMotorista(getMotoristaDisponivel());
         return viagemRepository.save(viajem);
     }
 
