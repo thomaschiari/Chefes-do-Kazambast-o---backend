@@ -50,9 +50,10 @@ public class Viagem {
     @NotNull
     @NonNull
     private Integer tempo;
-
+    
+    // default status = 0 (not confirmed)
     @Column
-    private Integer status;
+    private Integer status = 0;
 
     @Column
     private Integer idMotorista;
@@ -61,5 +62,7 @@ public class Viagem {
     private String identifier;
 
     @Column
+    @NotNull
+    @NonNull
     private List<String> itens;
 }
