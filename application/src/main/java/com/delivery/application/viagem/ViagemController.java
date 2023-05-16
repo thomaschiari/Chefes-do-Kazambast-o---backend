@@ -43,7 +43,12 @@ public class ViagemController {
         return viagemService.update(viagem);
     }
 
+<<<<<<< Updated upstream
     @PutMapping("/confirm/{identifier}") // confirmByIdentifier (change status to 1)
+=======
+    // confirmByIdentifier (muda o status para 1)
+    @PutMapping("/{identifier}/status")
+>>>>>>> Stashed changes
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void confirmByIdentifier(@PathVariable String identifier) {
         viagemService.confirmByIdentifier(identifier);
