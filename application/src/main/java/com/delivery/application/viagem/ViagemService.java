@@ -36,11 +36,7 @@ public class ViagemService {
         return viagemRepository.save(viajem);
     }
 
-<<<<<<< Updated upstream
-    // confirmByIdentifier (change status to 1)
-=======
     // confirmByIdentifier (muda o status para 1)
->>>>>>> Stashed changes
     @Transactional
     public void confirmByIdentifier(String identifier) {
         viagemRepository.confirmByIdentifier(identifier);
