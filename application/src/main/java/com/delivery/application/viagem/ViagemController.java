@@ -47,4 +47,9 @@ public class ViagemController {
         return new ResponseEntity<>(updatedViagem, HttpStatus.OK);
     }
 
+    @PutMapping("/{identifier}/status/")
+    public ResponseEntity<ViagemDTO> updateStatusByIdentifier(@PathVariable String identifier) {
+        ViagemDTO updatedViagem = viagemService.updateStatusByIdentifier(identifier);
+        return new ResponseEntity<>(updatedViagem, HttpStatus.OK);
+    }
 }

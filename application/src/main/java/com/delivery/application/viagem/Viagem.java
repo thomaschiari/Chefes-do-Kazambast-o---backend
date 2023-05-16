@@ -6,6 +6,7 @@ import lombok.*;
 
 // import date
 import java.util.Date;
+import java.util.List;
 
 
 @Getter
@@ -51,8 +52,6 @@ public class Viagem {
     private Integer tempo;
 
     @Column
-    @NotNull
-    @NonNull
     private Integer status;
 
     @Column
@@ -61,4 +60,6 @@ public class Viagem {
     @Column
     private String identifier;
 
+    @Column
+    private List<String> itens;
 }
