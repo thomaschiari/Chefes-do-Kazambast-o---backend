@@ -3,7 +3,7 @@
 #### Get todas as entregas
 
 ```http
-  GET /api/entregas
+  GET /api/viagem
 ```
 
 | Return | Type     | Description                |
@@ -13,7 +13,7 @@
 #### Get entrega por identifier
 
 ```http
-  GET /api/entregas/${identifier}
+  GET /api/viagem/${identifier}
 ```
 
 | Parameter | Type     | Description                       |
@@ -24,24 +24,10 @@
 | :-------- | :------- | :------------------------- |
 | `entrega`     | `json` | Retorna json daquela entrega    |
 
-#### Get entregas de um entregador
-
-```http
-  GET /api/entregas/entregador/${identifier}
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `identifier`     | `string` | **Required**. identifier do entregador  |
-
-| Return | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `entregas`     | `json` | Retorna json com todas as entregas daquele entregador    |
-
 #### POST cadastro de entrega
 
 ```http
-  POST /api/entregas
+  POST /api/viagem
 ```
 
 | Body | Type     | Description                       |
@@ -55,7 +41,7 @@
 #### PUT atualização de entrega
 
 ```http
-  PUT /api/entregas/${identifier}
+  PUT /api/viagem/${identifier}
 ```
 
 | Parameter | Type     | Description                       |
@@ -73,7 +59,7 @@
 #### GET todas as entregas finalizadas
 
 ```http
-  GET /api/entregas/finalizadas
+  GET /api/viagem/finalizadas
 ```
 
 | Return | Type     | Description                |
@@ -83,7 +69,7 @@
 #### GET todas as entregas pendentes
 
 ```http
-  GET /api/entregas/pendentes
+  GET /api/viagem/pendentes
 ```
 
 | Return | Type     | Description                |
@@ -93,7 +79,7 @@
 #### GET todas as entregas em andamento
 
 ```http
-  GET /api/entregas/andamento
+  GET /api/viagem/andamento
 ```
 
 | Return | Type     | Description                |
@@ -103,7 +89,7 @@
 #### GET todas as entregas canceladas
 
 ```http
-  GET /api/entregas/canceladas
+  GET /api/viagem/canceladas
 ```
 
 | Return | Type     | Description                |
@@ -113,7 +99,7 @@
 #### DELETE entrega
 
 ```http
-  DELETE /api/entregas/${identifier}
+  DELETE /api/viagem/${identifier}
 ```
 
 | Parameter | Type     | Description                       |
